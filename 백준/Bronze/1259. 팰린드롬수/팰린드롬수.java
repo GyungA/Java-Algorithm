@@ -13,11 +13,7 @@ public class Main {
             }
             StringBuilder sb = new StringBuilder(input);
             String reversed = sb.reverse().toString();
-            if (input.equals(reversed)) {
-                result.append("yes").append("\n");
-            } else {
-                result.append("no").append("\n");
-            }
+            result.append(input.equals(reversed) ? "yes" : "no").append("\n");
         }
         System.out.println(result);
     }
