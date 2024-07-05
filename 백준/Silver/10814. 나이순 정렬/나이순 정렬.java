@@ -13,7 +13,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int count = Integer.parseInt(br.readLine());
 
-        ArrayList users = new ArrayList();
+        ArrayList<User> users = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             User user = new User(i, Integer.parseInt(st.nextToken()), st.nextToken());
@@ -24,8 +24,8 @@ public class Main {
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < count; i++) {
-            User user = (User) users.get(i);
-            sb.append(user.getAge()).append(" ").append(user.getName()).append("\n");
+            User user = users.get(i);
+            sb.append(user.age).append(" ").append(user.name).append("\n");
         }
 
         System.out.println(sb);
@@ -36,14 +36,6 @@ public class Main {
         int age;
         String name;
 
-        int getAge() {
-            return age;
-        }
-
-        String getName() {
-            return name;
-        }
-
         User(int index, int age, String name) {
             this.index = index;
             this.age = age;
@@ -53,18 +45,9 @@ public class Main {
         @Override
         public int compareTo(User user) {
             if (user.age == age) {
-                if (user.index < index) {
-                    return 1;
-                } else if (user.index > index) {
-                    return -1;
-                }
+                return user.index < index ? 1 : -1;
             }
-            if (user.age < age) {
-                return 1;
-            } else if (user.age > age) {
-                return -1;
-            }
-            return 0;
+            return user.age < age ? 1 : -1;
         }
     }
 }
